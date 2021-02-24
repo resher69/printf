@@ -6,41 +6,51 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/02/04 16:42:58 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/02/09 15:54:51 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	
+SRCS	=	ft_print_no_percent.c\
 			ft_no_percent.c\
-			ft_print_no_percent.c\
 			ft_treat_input.c\
-			
-
-
+			ft_printf.c
 
 OBJS	=	$(SRCS:.c=.o)
-
 
 FLAGS	=	-Wall -Wextra -Werror
 
 NAME	=	libftprintf.a
 
+HEADER =	includes/ft_printf.h
+
+INC_DIR =	includes/
+
+LIBFT =		libft/libft.a
+
+all:		libft $(NAME)
+
 $(NAME):	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
 
-HEADER = includes/ft_printf.h
+%.o: %.c	$(HEADER)
+			gcc $(FLAGS) -I $(INC_DIR) -c $< -o $@
 
-%.o:		%.c				$(HEADER)
-			gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
+libft:
+		make -C libft/
 
-all:		$(NAME)
+test:	all
+		gcc -I $(INC_DIR) $(NAME) $(LIBFT) main.c -o debug.out
+		clear
+		@./debug.out
 
 clean:
-			rm -f $(OBJS) $(BONUS_OBJS)
+			make -C libft clean
+			rm -f $(OBJS)
 
 fclean:		clean
-			rm -f $(NAME) $(BONUS)
+			make -C libft fclean
+			rm -f $(NAME) debug.out
 
 re:			fclean all
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re bonus test libft

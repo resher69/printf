@@ -1,6 +1,16 @@
 #include <stdio.h>
-#include "includes/ft_printf.h"
-int main()
+// #include "ft_printf.h"
+
+int main(void)
 {
-	ft_treat_input("SALUT A TOUS");
+	int		arg1;
+	char	*str;
+
+	arg1 = 0;
+	printf("%10.d", 1541);
+	// str = "SALUT LES PUTES";
+	// write(1, "mine:\n", 6);
+	// printf("\nreturn=%d\n", ft_printf(str, arg1));
+	// write(1, "\norig:\n", 7);
+	// printf("\nreturn=%d\n", printf(str, arg1));
 }
