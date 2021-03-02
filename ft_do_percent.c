@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_percent.c                                       :+:      :+:    :+:   */
+/*   ft_do_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/22 15:08:31 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/26 13:47:13 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/02/22 13:42:48 by agardet           #+#    #+#             */
+/*   Updated: 2021/03/02 12:10:14 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
-int	ft_percent(const char *format)
+int ft_do_percent(char *format, t_flag *flag)
 {
-	size_t	i;
-
-	i = 0;
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-			return (0);
-		i++;
-	}
-	return (-1);
+	ft_check_flags(format, t_flag *flag);
 }

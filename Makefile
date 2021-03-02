@@ -6,12 +6,12 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/02/09 15:54:51 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/03/02 11:14:02 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	ft_print_no_percent.c\
-			ft_no_percent.c\
+			ft_check_no_percent.c\
 			ft_treat_input.c\
 			ft_printf.c
 

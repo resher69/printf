@@ -9,4 +9,5 @@ int main(void)
 
 	arg1 = 0;
 	printf("%-*d", 10, 50);
+	printf("xdlol: %%");
 }
