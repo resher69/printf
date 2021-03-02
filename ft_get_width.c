@@ -6,15 +6,15 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 15:58:27 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/04 16:43:55 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:47:21 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ft_get_width(const char *stdin, t_flag *flag)
+ft_get_width(const char *format, t_flag *flag)
 {
-	if (stdin[i] == '*')
+	if (format[i] == '*')
 	{
 		
 	}

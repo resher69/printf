@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:10:13 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/22 16:16:38 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:47:50 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct		s_flag
 	size_t	total_len;
 }					t_flag;
 
-int				ft_treat_input(const char *stdin);
-int					ft_no_percent(const char *stdin);
-int				ft_print_no_percent(const char *stdin);
-int					ft_printf(const char *stdin, ...);
+int				ft_treat_input(const char *format);
+int					ft_no_percent(const char *format);
+int				ft_print_no_percent(const char *format);
+int					ft_printf(const char *format, ...);
 
 #endif

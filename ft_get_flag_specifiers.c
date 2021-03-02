@@ -6,21 +6,21 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 15:41:58 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/22 16:17:21 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:47:31 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ft_get_flag_specifiers(const char *stdin, t_flag *flag)
+ft_get_flag_specifiers(const char *format, t_flag *flag)
 {
 	size_t	i;
 
 	i = 0;
-	while (stdin[i] == '0' || stdin[i] == '+' || stdin[i] == '-')
+	while (format[i] == '0' || format[i] == '-')
 	{
-		if (stdin[i] == '#')
-			flag->hashtag = 0;
+		if (format[i] == '0')
+			flag->zero = 0;
 	}
 
 }

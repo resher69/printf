@@ -6,22 +6,22 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:08:08 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/04 15:41:52 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/02/26 13:47:38 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ft_get_conversion(const char *stdin, t_flag *flag)
+ft_get_conversion(const char *format, t_flag *flag)
 {
 	size_t i;
 
 	i = 0;
 	flag->type = -1;
-	if (stdin[i] == 'c' || stdin[i] == 's' || stdin[i] == 'p' ||
-		stdin[i] == 'd' || stdin[i] == 'i' || stdin[i] == 'u' ||
-		stdin[i] == 'x' || stdin[i] == 'X' || stdin[i] == '%')
-		flag->type = stdin[i]; 
+	if (format[i] == 'c' || format[i] == 's' || format[i] == 'p' ||
+		format[i] == 'd' || format[i] == 'i' || format[i] == 'u' ||
+		format[i] == 'x' || format[i] == 'X' || format[i] == '%')
+		flag->type = format[i]; 
 	i++;
 	return (i);
 }
