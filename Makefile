@@ -6,14 +6,17 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/03/02 11:14:02 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/03/08 16:03:06 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_print_no_percent.c\
-			ft_check_no_percent.c\
+SRCS	=	ft_printf.c\
 			ft_treat_input.c\
-			ft_printf.c
+			ft_check_percent.c\
+			ft_print_no_convers.c\
+			ft_do_percent.c\
+			ft_get_flag.c\
+			ft_get_width.c
 
 OBJS	=	$(SRCS:.c=.o)
 

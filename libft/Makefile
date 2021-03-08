@@ -6,11 +6,12 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/27 11:11:01 by agardet           #+#    #+#              #
-#    Updated: 2021/01/18 14:25:41 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/03/08 15:41:21 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-	SRCS	=	ft_memset.c\
+	SRCS	=	ft_putchar.c\
+				ft_memset.c\
 				ft_bzero.c\
 				ft_memcpy.c\
 				ft_strlen.c\

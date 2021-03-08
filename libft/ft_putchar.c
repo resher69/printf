@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_overrides.c                               :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 16:15:36 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/22 16:16:15 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/03/02 15:22:27 by agardet           #+#    #+#             */
+/*   Updated: 2021/03/02 15:23:00 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void	ft_treat_overrides(t_flag *flag)
+void	ft_putchar(char c)
 {
-	if (flag->minus == 0 && flag->zero == 0)
-		flag->zero = -1;
+	write(1, &c, 1);
 }

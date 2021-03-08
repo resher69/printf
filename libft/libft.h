@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 10:05:32 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/09 11:33:00 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 15:41:13 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_putchar(char c);
 size_t				ft_strlen(const char *s);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

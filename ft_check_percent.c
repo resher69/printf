@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_flag_specifiers.c                           :+:      :+:    :+:   */
+/*   ft_check_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 15:41:58 by agardet           #+#    #+#             */
-/*   Updated: 2021/02/26 13:47:31 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/03/08 13:44:41 by agardet           #+#    #+#             */
+/*   Updated: 2021/03/08 15:55:24 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ft_get_flag_specifiers(const char *format, t_flag *flag)
+int	ft_check_percent(char *format, t_flag *flag)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (format[i] == '0' || format[i] == '-')
+	while (format[i])
 	{
-		if (format[i] == '0')
-			flag->zero = 0;
+		if (format[i] == '%')
+		{
+			flag->roam = i + 1;
+			return (SUCCESS);
+		}
+		i++;
 	}
-
+	return (ERROR);
 }

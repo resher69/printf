@@ -8,6 +8,6 @@ int main(void)
 	char	*str;
 
 	arg1 = 0;
-	printf("%-*d", 10, 50);
-	printf("xdlol: %%");
+	printf("%5010d", 50);
+
 }

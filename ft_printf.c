@@ -6,22 +6,22 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:01:04 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/02 12:10:26 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/03/08 15:49:24 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
-	t_flag *flag;
-	va_list args;
+	t_flag	*flag;
+	va_list	args;
 	size_t	i;
 	int		ret;
 
 	i = 0;
 	va_start(args, format);
-	ret = ft_treat_input(format);
+	ret = ft_treat_input(format, flag, args);
 	va_end(args);
 	return (ret);
 }
