@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_width.c                                     :+:      :+:    :+:   */
+/*   ft_get_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 16:03:11 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/10 15:10:38 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/03/08 15:52:25 by agardet           #+#    #+#             */
+/*   Updated: 2021/03/10 15:10:10 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_get_width(char *format, t_flag *flag)
+void	ft_get_flag(char *format, t_flag *flag)
 {
-	if (flag->f_width == 1)
-	{
-	}
+	if (format[flag->roam] == '-')
+		flag->minus = 0;
+	else if (format[flag->roam] == '0')
+		flag->zero = 0;
+	else if (format[flag->roam] == '.')
+		flag->prec = 0;
 	else if (format[flag->roam] >= '0' && format[flag->roam] <= '9')
-		flag->width = ft_atoi(&format[flag->roam]);
+		flag->f_width = 0;
+	else if (format[flag->roam] == '*')
+		flag->f_width = 1;
+	if (flag->minus == '0' || flag->zero == '0' || flag->prec == '0'
+							|| flag->f_width == '1')
+		flag->roam++;
 }

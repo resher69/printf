@@ -8,6 +8,6 @@ int main(void)
 	char	*str;
 
 	arg1 = 0;
-	printf("%5010d", 50);
+	printf("%-10d", 50);
 
 }
