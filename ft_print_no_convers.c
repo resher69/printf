@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:29:15 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/08 15:51:31 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/03/17 13:44:35 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_print_no_convers(char *format, t_flag *flag)
 	while (format[i] && format[i] != '%')
 	{
 		ft_putchar(format[i]);
+		flag->size++;
 		i++;
 	}
 }

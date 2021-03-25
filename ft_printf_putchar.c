@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_width.c                                     :+:      :+:    :+:   */
+/*   ft_printf_putchar.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 16:03:11 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/19 16:35:21 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/03/19 14:26:07 by agardet           #+#    #+#             */
+/*   Updated: 2021/03/19 16:35:49 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_get_width(char *format, t_flag *flag, va_list args)
+void	ft_printf_putchar(char c, t_flag *flag)
 {
-	if (flag->f_width == 1)
-	{
-		flag->width = va_arg(args, int);
-		flag->roam++;
-	}
-	else if (format[flag->roam] >= '0' && format[flag->roam] <= '9')
-	{
-		flag->width = ft_atoi(&format[flag->roam]);
-		while (format[flag->roam] >= '0' && format[flag->roam] <= '9')
-			flag->roam++;
-	}
+	write(1, &c, 1);
+	flag->size++;
+	flag->width--;
 }

@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/03/08 16:03:06 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/03/19 16:38:04 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,16 @@ SRCS	=	ft_printf.c\
 			ft_print_no_convers.c\
 			ft_do_percent.c\
 			ft_get_flag.c\
-			ft_get_width.c
+			ft_get_width.c\
+			ft_treat_flag.c\
+			ft_get_type.c\
+			ft_printf_putchar.c\
+			ft_print_c.c
+
 
 OBJS	=	$(SRCS:.c=.o)
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	#-Wall -Wextra -Werror
 
 NAME	=	libftprintf.a
 

@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 10:05:32 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/08 15:41:08 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/03/18 13:52:58 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf.h"
 
 typedef struct		s_list
 {
