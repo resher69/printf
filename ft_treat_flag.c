@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 14:50:46 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/24 13:47:43 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/08 13:41:02 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_treat_flag(char *format, t_flag *flag)
 	int	i;
 
 	i = 0;
+	printf("test");
 	if (flag->minus == 0)
 		ft_print_blanks(format, flag);
 	else if (flag->zero == 0)

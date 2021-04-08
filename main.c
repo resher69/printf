@@ -4,6 +4,6 @@
 
 int main(void)
 {	
-	printf("%c\n", 's');
-	ft_printf("test%05cbonjour", 'g');
+	ft_printf("%c\n", 's');
+
 } 
