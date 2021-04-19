@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/03/19 16:38:04 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/04/19 16:21:50 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,43 +22,32 @@ SRCS	=	ft_printf.c\
 			ft_printf_putchar.c\
 			ft_print_c.c
 
+OBJS		= ${SRCS:.c=.o}
 
-OBJS	=	$(SRCS:.c=.o)
+NAME		= libft.a
 
-FLAGS	=	#-Wall -Wextra -Werror
+INC			= libft.h
 
-NAME	=	libftprintf.a
+CC			= gcc
 
-HEADER =	includes/ft_printf.h
+RM			= rm -f
 
-INC_DIR =	includes/
+CFLAGS		= -Wall -Wextra -Werror
 
-LIBFT =		libft/libft.a
+all:		${NAME}
 
-all:		libft $(NAME)
+%.o : %.c	${INC}
+			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-$(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
-
-%.o: %.c	$(HEADER)
-			gcc $(FLAGS) -I $(INC_DIR) -c $< -o $@
-
-libft:
-		make -C libft/
-
-test:	all
-		gcc -I $(INC_DIR) $(NAME) $(LIBFT) main.c -o debug.out
-		clear
-		@./debug.out
+${NAME}:	${OBJS}
+			ar -rc ${NAME} $?
 
 clean:
-			make -C libft clean
-			rm -f $(OBJS)
+			${RM} ${OBJS}
 
 fclean:		clean
-			make -C libft fclean
-			rm -f $(NAME) debug.out
+			${RM} ${NAME}
 
 re:			fclean all
 
-.PHONY:		all clean fclean re bonus test libft
+.PHONY:	 all clean fclean re

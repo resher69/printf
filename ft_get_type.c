@@ -6,11 +6,11 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 14:56:16 by agardet           #+#    #+#             */
-/*   Updated: 2021/03/20 17:07:49 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/19 14:19:17 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 int	ft_get_type(char *format, t_flag *flag)
 {
