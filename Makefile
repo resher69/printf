@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/04/19 16:21:50 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/04/22 16:50:56 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ SRCS	=	ft_printf.c\
 			ft_treat_flag.c\
 			ft_get_type.c\
 			ft_printf_putchar.c\
+			ft_print_no_percent.c\
 			ft_print_c.c
 
 OBJS		= ${SRCS:.c=.o}
 
-NAME		= libft.a
+NAME		= libftprintf.a
 
 INC			= libft.h
 
@@ -34,16 +35,20 @@ RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
 
-all:		${NAME}
+all:		lib ${NAME}
+
+lib:		
+			make -C libft/
+			cp libft/libft.a .
 
 %.o : %.c	${INC}
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -I includes/ -l libft/libft.a -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			ar -rc ${NAME} $?
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} 
 
 fclean:		clean
 			${RM} ${NAME}

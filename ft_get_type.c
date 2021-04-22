@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 14:56:16 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/19 14:19:17 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/22 13:52:59 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ int	ft_get_type(char *format, t_flag *flag)
 	else
 		return (ERROR);
 	return (SUCCESS);
-
 }
