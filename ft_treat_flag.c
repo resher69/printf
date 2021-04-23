@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 14:50:46 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/22 15:57:58 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/23 17:41:02 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_treat_flag(t_flag *flag)
 	int	i;
 
 	i = 0;
-	printf("caca");
 	if (flag->minus == 0)
 		ft_print_blanks(flag);
 	else if (flag->zero == 0)

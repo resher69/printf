@@ -6,18 +6,18 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:52:25 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/22 13:55:58 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/23 17:33:45 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
 void	ft_get_flag(char *format, t_flag *flag)
-{
+{	
 	if (format[flag->roam] == '-')
 		flag->minus = 0;
 	else if (format[flag->roam] == '0')
-		flag->zero = 0;
+		flag->zero = '0';
 	else if (format[flag->roam] == '.')
 		flag->prec = 0;
 	else if (format[flag->roam] >= '0' && format[flag->roam] <= '9')
@@ -25,6 +25,6 @@ void	ft_get_flag(char *format, t_flag *flag)
 	else if (format[flag->roam] == '*')
 		flag->f_width = 1;
 	if (flag->minus == '0' || flag->zero == '0' || flag->prec == '0'
- 						 		|| flag->f_width == '1')
+		|| flag->f_width == '0')
 		flag->roam++;
 }

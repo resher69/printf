@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:01:04 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/22 15:59:58 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/23 17:34:24 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ int	ft_printf(const char *format, ...)
 {
 	t_flag	flag;
 	va_list	args;
-	size_t	i;
 	int		ret;
 
-	i = flag.width;
 	va_start(args, format);
+	ft_flag_init(&flag);
 	ret = ft_treat_input((char *)format, &flag, args);
-	printf("ouioui");
 	va_end(args);
 	return (0);
 }

@@ -4,6 +4,8 @@
 
 int main(void)
 {
-	ft_printf("%05c\n", 's');
-	printf("\n%05c\n", 's');
+	char test;
+
+	test = 'd';
+	ft_printf("%c", test);
 }

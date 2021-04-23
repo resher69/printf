@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_putchar.c                                :+:      :+:    :+:   */
+/*   ft_flag_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 14:26:07 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/19 14:19:19 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/04/23 17:33:07 by agardet           #+#    #+#             */
+/*   Updated: 2021/04/23 17:42:19 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-void	ft_printf_putchar(char c, t_flag *flag)
+void	ft_flag_init(t_flag *flag)
 {
-	write(1, &c, 1);
-	flag->size++;
-	flag->width--;
+	flag->minus = 1;
+	flag->zero = ' ';
+	flag->width = 0;
+	flag->f_width = 1;
+	flag->prec = 1;
+	flag->size = 0;
+	flag->roam = 0;
 }

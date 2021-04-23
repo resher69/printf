@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 16:26:12 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/22 16:07:44 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/23 17:28:07 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_treat_input(char *format, t_flag *flag, va_list args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ft_check_percent(format, flag) == ERROR)

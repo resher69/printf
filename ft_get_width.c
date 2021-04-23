@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:03:11 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/22 15:54:45 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/23 17:41:12 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_get_width(char *format, t_flag *flag, va_list args)
 {
-	printf("test");
 	if (flag->f_width == 1)
 	{
 		flag->width = va_arg(args, int);
@@ -25,6 +24,7 @@ void	ft_get_width(char *format, t_flag *flag, va_list args)
 		flag->width = ft_atoi(&format[flag->roam]);
 		while (format[flag->roam] >= '0' && format[flag->roam] <= '9')
 			flag->roam++;
-		printf("bonjour");
 	}
 }
+
+
