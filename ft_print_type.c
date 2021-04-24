@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:14:53 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/23 17:37:17 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/24 16:29:57 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ int	ft_get_type(char *format, t_flag *flag)
 
 void	ft_print_type(va_list args, t_flag *flag, char *format)
 {
-	printf("je suis a %c", format[flag->roam]);
 	if (format[flag->roam] == 'c')
 	{
-		printf("test");
-	}
 		ft_print_c(args, flag);
+	}
 	if (format[flag->roam] == 's')
 	{
-		ft_print_s(args, flag);
-
+		ft_print_s(va_arg(args, char *), flag, args);
 	}
 	// if (format[flag->roam] == 'p')
 	// 	ft_print_p(args, flag);
@@ -54,4 +51,6 @@ void	ft_print_type(va_list args, t_flag *flag, char *format)
 	// 	ft_print_X(args, flag);
 	// if (format[flag->roam] == '%')
 	// 	ft_print_percent(args, flag);
+	flag->roam++;
+	flag->size = 0;
 }

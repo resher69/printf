@@ -6,6 +6,6 @@ int main(void)
 {
 	char test;
 
-	test = 'd';
-	ft_printf("%c", test);
+	printf("%.50s\n", "test");
+	ft_printf("%.50s", "test");
 }

@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 16:03:11 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/23 17:41:12 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/24 16:21:47 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,3 @@ void	ft_get_width(char *format, t_flag *flag, va_list args)
 			flag->roam++;
 	}
 }
-
-

@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/04/23 17:33:38 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/04/24 14:29:29 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,6 @@ SRCS	=	ft_printf.c\
 			ft_do_percent.c\
 			ft_get_flag.c\
 			ft_get_width.c\
-			ft_treat_flag.c\
-			ft_get_type.c\
-			ft_printf_putchar.c\
 			ft_print_no_percent.c\
 			ft_print_c.c\
 			ft_print_s.c\

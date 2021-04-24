@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:52:25 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/23 17:33:45 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/24 16:21:48 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_get_flag(char *format, t_flag *flag)
 		flag->f_width = 0;
 	else if (format[flag->roam] == '*')
 		flag->f_width = 1;
-	if (flag->minus == '0' || flag->zero == '0' || flag->prec == '0'
+	if (flag->minus == 0 || flag->zero == '0' || flag->prec == '0'
 		|| flag->f_width == '0')
 		flag->roam++;
 }
