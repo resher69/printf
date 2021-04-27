@@ -6,22 +6,16 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/04/24 14:29:29 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/04/27 17:24:06 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	ft_printf.c\
-			ft_treat_input.c\
-			ft_check_percent.c\
-			ft_print_no_convers.c\
-			ft_do_percent.c\
-			ft_get_flag.c\
-			ft_get_width.c\
-			ft_print_no_percent.c\
-			ft_print_c.c\
-			ft_print_s.c\
-			ft_flag_init.c\
-			ft_print_type.c
+			ft_printf_core.c\
+			ft_printf_flag.c\
+			ft_printf_utils2.c\
+			ft_print_type.c\
+			ft_print_spec.c
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -35,17 +29,15 @@ RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
 
-all:		lib ${NAME}
-
-lib:		
-			make -C libft/
-			cp libft/libft.a .
+all:		${NAME}
 
 %.o : %.c	${INC}
-			${CC} ${CFLAGS} -I includes/ -l libft/libft.a -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -I includes/ -c $< -o $@
 
 ${NAME}:	${OBJS}
-			ar -rc ${NAME} $?
+			make -C libft/
+			cp libft/libft.a libftprintf.a
+			ar -rcs ${NAME} ${OBJS}
 
 clean:
 			${RM} ${OBJS} 

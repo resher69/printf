@@ -6,13 +6,13 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:14:53 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/24 16:29:57 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/27 18:09:09 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int	ft_get_type(char *format, t_flag *flag)
+void	ft_get_type(char *format, t_flag *flag)
 {
 	if (format[flag->roam] == 'c' || format[flag->roam] == 's'
 		|| format[flag->roam] == 'p' || format[flag->roam] == 'd'
@@ -23,16 +23,14 @@ int	ft_get_type(char *format, t_flag *flag)
 		flag->roam++;
 	}
 	else
-		return (ERROR);
-	return (SUCCESS);
+		flag->error = 0;
 }
 
 void	ft_print_type(va_list args, t_flag *flag, char *format)
 {
-	if (format[flag->roam] == 'c')
-	{
+	ft_get_type(format, flag);
+	if (flag->type == 'c')
 		ft_print_c(args, flag);
-	}
 	if (format[flag->roam] == 's')
 	{
 		ft_print_s(va_arg(args, char *), flag, args);
@@ -51,6 +49,5 @@ void	ft_print_type(va_list args, t_flag *flag, char *format)
 	// 	ft_print_X(args, flag);
 	// if (format[flag->roam] == '%')
 	// 	ft_print_percent(args, flag);
-	flag->roam++;
-	flag->size = 0;
+	ft_flag_reset(flag);
 }

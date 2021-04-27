@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_c.c                                       :+:      :+:    :+:   */
+/*   ft_print_spec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 14:16:29 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/24 15:12:53 by agardet          ###   ########lyon.fr   */
+/*   Created: 2021/04/25 16:23:36 by agardet           #+#    #+#             */
+/*   Updated: 2021/04/27 18:15:34 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,37 @@
 
 void	ft_print_c(va_list	args, t_flag *flag)
 {
-	if (flag->minus == 0)
+	if (flag->left == 0)
 	{
-		ft_printf_putchar((unsigned char)va_arg(args, int), flag);
-		while (flag->size + 1 < flag->width)
-			ft_printf_putchar(' ', flag);
-	}
-	else
-	{
-		while (flag->size + 1 < flag->width)
+		while (flag->width-- > 1)
 			ft_printf_putchar(flag->zero, flag);
 		ft_printf_putchar((unsigned char)va_arg(args, int), flag);
 	}
+	else
+	{
+		if (flag->width < 0)
+			flag->width *= -1;
+		ft_printf_putchar((unsigned char)va_arg(args, int), flag);
+		while (flag->width-- > 1)
+		{
+			ft_printf_putchar(' ', flag);
+		}
+	}
 }
 
-void	ft_printf_putchar(char c, t_flag *flag)
+void	ft_print_s(char *arg, t_flag *flag, va_list args)
 {
-	write(1, &c, 1);
-	flag->size++;
+	(void)arg;
+	if (flag->left == 0)
+	{
+		while (flag->width-- > 1)
+			ft_printf_putchar(flag->zero, flag);
+		ft_putstr_printf(va_arg(args, char *), flag);
+	}
+	else
+	{
+		ft_putstr_printf(va_arg(args, char *), flag);
+		while (flag->width-- > 1)
+			ft_printf_putchar(' ', flag);
+	}
 }
