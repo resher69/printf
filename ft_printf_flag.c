@@ -6,30 +6,11 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:12:21 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/27 18:14:33 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/29 12:23:28 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
-
-void	ft_get_flag(char *format, t_flag *flag, va_list args)
-{	
-	if (format[flag->roam] == '-')
-		flag->minus = 0;
-	else if (format[flag->roam] == '0')
-		flag->zero = '0';
-	else if (format[flag->roam] == '.')
-		flag->f_prec = 0;
-	else if ((format[flag->roam] >= '0' && format[flag->roam] <= '9')
-		|| format[flag->roam] == '*')
-		flag->f_width = 0;
-	if (flag->zero == '0' || flag->f_width == 0)
-		flag->left = 0;
-	if (flag->minus == 0 || flag->zero == '0' || flag->f_prec == 0)
-		flag->roam++;
-	ft_get_width(format, flag, args);
-	ft_get_prec(format, flag, args);
-}
 
 void	ft_get_width(char *format, t_flag *flag, va_list args)
 {
@@ -45,6 +26,12 @@ void	ft_get_width(char *format, t_flag *flag, va_list args)
 			flag->width = ft_atoi(&format[flag->roam]);
 		while (format[flag->roam] >= '0' && format[flag->roam] <= '9')
 			flag->roam++;
+		if (flag->width < 0)
+		{
+			flag->width *= -1;
+			flag->left = 1;
+			flag->zero = ' ';
+		}
 	}
 }
 
@@ -52,19 +39,23 @@ void	ft_get_prec(char *format, t_flag *flag, va_list args)
 {
 	if (format[flag->roam] == '.')
 	{
-		if ((format[flag->roam] >= '0' && format[flag->roam] <= '9')
-			|| format[flag->roam] == '*')
-		{
-			if (format[flag->roam] == '*')
-			{
-				flag->prec = va_arg(args, int);
-				flag->roam++;
-			}
-			flag->prec = ft_atoi(&format[flag->roam]);
-			while (format[flag->roam] >= '0' && format[flag->roam] <= '9')
-				flag->roam++;
-		}
+		flag->f_prec = 0;
+		flag->roam++;
 	}
+	if ((format[flag->roam] >= '0' && format[flag->roam] <= '9') || format[flag->roam] == '*')
+	{
+		if (format[flag->roam] == '*')
+		{
+			flag->prec = va_arg(args, int);
+			flag->roam++;
+		}
+		else
+			flag->prec = ft_atoi(&format[flag->roam]);
+		while (format[flag->roam] >= '0' && format[flag->roam] <= '9')
+			flag->roam++;
+	}
+	if (flag->prec < 0)
+		flag->f_prec = 1;
 }
 
 void	ft_flag_init(t_flag *flag)
@@ -80,6 +71,7 @@ void	ft_flag_init(t_flag *flag)
 	flag->left = 1;
 	flag->error = 0;
 	flag->flag = 1;
+	flag->type = '\0';
 }
 
 void	ft_flag_reset(t_flag *flag)
@@ -92,4 +84,19 @@ void	ft_flag_reset(t_flag *flag)
 	flag->f_prec = 1;
 	flag->left = 1;
 	flag->flag = 1;
+	flag->type = '\0';
+}
+
+void	ft_get_type(char *format, t_flag *flag)
+{
+	if (format[flag->roam] == 'c' || format[flag->roam] == 's'
+		|| format[flag->roam] == 'p' || format[flag->roam] == 'd'
+		|| format[flag->roam] == 'u' || format[flag->roam] == 'x'
+		|| format[flag->roam] == 'X' || format[flag->roam] == '%')
+	{
+		flag->type = format[flag->roam];
+		flag->roam++;
+	}
+	else
+		flag->error = 0;
 }

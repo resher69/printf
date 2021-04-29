@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:48:12 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/27 18:09:07 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/04/29 12:25:06 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,4 @@ void	ft_printf_putchar(char c, t_flag *flag)
 {
 	write(1, &c, 1);
 	flag->size++;
-}
-
-void	ft_putstr_printf(char *s, t_flag *flag)
-{
-	int	i;
-	int	i_max;
-
-	i = 0;
-	if (!s)
-		s = "(null)";
-	if (flag->f_prec == 0)
-		i_max = flag->prec;
-	else
-		i_max = ft_strlen(s);
-	while (s[i])
-	{
-		ft_putchar(s[i]);
-		i++;
-		flag->size++;
-	}
 }

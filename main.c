@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include "includes/ft_printf.h"
 
-int main(void)
+int	main(void)
 {
-	char test;
+	char	test;
 
-	printf("%*c\n", -2, '0');
-	ft_printf("%*c", -2, '0');
+	printf("| %d |\n", 0);
+	ft_printf("| %d |", 0);
 }
