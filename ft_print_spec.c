@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 16:23:36 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/29 18:19:49 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 17:53:45 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,32 @@ void	ft_print_d(long nbr, t_flag *flag)
 {
 	int	field;
 
-	field = flag->width - ft_print_d_add_on(nbr, ft_count_digit(nbr), flag);
+	field = flag->width - ft_print_d_u_add_on(nbr, ft_count_digit(nbr), flag);
+	if (flag->zero == '0' && nbr < 0)
+	{
+		ft_printf_putchar('-', flag);
+		nbr *= -1;
+	}
+	if (flag->left == 0)
+	{
+		while (field-- > 0)
+			ft_printf_putchar(flag->zero, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag);
+	}
+	else
+	{
+		ft_putnbr_printf(nbr, flag->prec, flag);
+		while (field-- > 0)
+			ft_printf_putchar(flag->zero, flag);
+	}
+}
+
+void	ft_print_u(unsigned long nbr, t_flag *flag)
+{
+	int	field;
+
+	field = flag->width \
+		- ft_print_d_u_add_on((unsigned long)nbr, ft_count_digit(nbr), flag);
 	if (flag->zero == '0' && nbr < 0)
 	{
 		ft_printf_putchar('-', flag);

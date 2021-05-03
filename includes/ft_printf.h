@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:10:13 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/29 18:15:22 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 17:49:04 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void			ft_print_type(va_list args, t_flag *flag, char *format);
 void			ft_print_c(char c, t_flag *flag);
 void			ft_print_s(char *arg, t_flag *flag);
 void			ft_print_d(long nbr, t_flag *flag);
-int				ft_print_d_add_on(long nbr, int count_digit, t_flag *flag);
+void			ft_print_u(unsigned long nbr, t_flag *flag);
+int				ft_print_d_u_add_on(long nbr, int count_digit, t_flag *flag);
 int				ft_printf(const char *format, ...);
 void			ft_flag_init(t_flag *flag);
 void			ft_flag_reset(t_flag *flag);
@@ -67,5 +68,6 @@ void			ft_putstr_printf(char *s, t_flag *flag);
 int				ft_putnbr_printf(long nbr, int i_max, t_flag *flag);
 long			ft_count_digit(long nbr);
 long long		ft_pow(int x, int pow);
+void			ft_flag_roam(t_flag *flag);
 
 #endif

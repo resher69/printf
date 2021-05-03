@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:40:49 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/29 17:44:14 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 17:53:41 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,21 @@ int	ft_printf_core(char *format, t_flag *flag, va_list args)
 
 void	ft_get_flag(char *format, t_flag *flag, va_list args)
 {	
+	if (format[flag->roam] == '0' && format[flag->roam + 1] == '-')
+		flag->roam++;
+	if (format[flag->roam] == '0')
+		flag->zero = '0';
 	if (format[flag->roam] == '-')
 		flag->minus = 0;
-	else if (format[flag->roam] == '0')
-		flag->zero = '0';
-	else if (format[flag->roam] == '.')
-		flag->f_prec = 0;
-	else if ((format[flag->roam] >= '0' && format[flag->roam] <= '9')
+	if ((format[flag->roam] >= '0' && format[flag->roam] <= '9')
 		|| format[flag->roam] == '*')
 		flag->f_width = 0;
-	if (flag->zero == '0' || flag->f_width == 0)
-		flag->left = 0;
 	if (flag->minus == 0 || flag->zero == '0')
 		flag->roam++;
+	if (flag->minus == 0 && format[flag->roam] == '0')
+		flag->roam++;
+	if (flag->zero == '0' || flag->f_width == 0)
+		flag->left = 0;
 	ft_get_width(format, flag, args);
 	ft_get_prec(format, flag, args);
 }
@@ -58,8 +60,8 @@ void	ft_print_type(va_list args, t_flag *flag, char *format)
 	// 	ft_print_p(args, flag);
 	else if (flag->type == 'd' || flag->type == 'i')
 		ft_print_d((long)va_arg(args, int), flag);
-	// if (format[flag->roam] == 'u')
-	// 	ft_print_u(args, flag);
+	else if (flag->type == 'u')
+		ft_print_u((unsigned long)va_arg(args, unsigned int), flag);
 	// if (format[flag->roam] == 'x')
 	// 	ft_print_x(args, flag);
 	// if (format[flag->roam] == 'X')

@@ -4,8 +4,11 @@
 
 int	main(void)
 {
-	char	test;
+	char	*test = "0000000000000000000000000000000000000000001";
+	int d ; 
+	// d = ft_strlen(test);
+	// printf("g ecri %d\n\n", d);
 
-	printf("| %d |\n", 0);
-	ft_printf("| %d |", 0);
+	printf("| %u |\n", 0);
+	ft_printf("| %u |", 0);
 }

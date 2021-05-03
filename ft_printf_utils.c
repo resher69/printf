@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:49:16 by agardet           #+#    #+#             */
-/*   Updated: 2021/04/29 18:20:53 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 17:48:18 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,28 @@ void	ft_putstr_printf(char *s, t_flag *flag)
 	}
 }
 
-int	ft_print_d_add_on(long nbr, int count_digit, t_flag *flag)
+int	ft_print_d_u_add_on(long nbr, int count_digit, t_flag *flag)
 {
-	int	ret;
-
-	ret = 0;
 	if (flag->f_prec == 0)
 		flag->zero = ' ';
-	if (count_digit <= flag->prec)
+	if (flag->type == 'd')
 	{
-		if (nbr < 0)
-			return (flag->prec++);
-		return (flag->prec);
+		if (count_digit <= flag->prec)
+		{
+			if (nbr < 0)
+				return (flag->prec + 1);
+			return (flag->prec);
+		}
+		else if (flag->f_prec == 0 && flag->prec == 0 && nbr == 0)
+			return (0);
 	}
-	else if (flag->f_prec == 0 && flag->prec == 0 && nbr == 0)
-		return (0);
+	else
+	{
+		if (count_digit <= flag->prec)
+			return (flag->prec);
+		else if (flag->f_prec == 0 && flag->prec == 0 && nbr == 0)
+			return (0);
+	}
 	return (count_digit);
 }
 
@@ -52,7 +59,7 @@ long	ft_count_digit(long nbr)
 {
 	long	ret;
 
-	ret = 0;
+	ret = 1;
 	if (nbr < 0)
 	{
 		ret++;
@@ -79,7 +86,7 @@ int	ft_putnbr_printf(long nbr, int i_max, t_flag *flag)
 		ft_printf_putchar('-', flag);
 		nbr *= -1;
 	}
-	pow = ft_count_digit(nbr - 1);
+	pow = ft_count_digit(nbr) - 1;
 	if (i_max < pow)
 		i_max = pow;
 	while (i_max > 0 || pow >= 0)
@@ -88,7 +95,7 @@ int	ft_putnbr_printf(long nbr, int i_max, t_flag *flag)
 			ft_printf_putchar('0', flag);
 		else
 		{
-			ft_printf_putchar(((nbr / ft_pow(10, pow--)) + '0'), flag);
+			ft_printf_putchar(((nbr / ft_pow(10, pow--)) + 48), flag);
 			nbr -= (nbr / ft_pow(10, pow + 1)) * ft_pow(10, pow + 1);
 		}
 	}
