@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:48:12 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/03 16:24:12 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 17:22:14 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,4 @@ void	ft_printf_putchar(char c, t_flag *flag)
 {
 	write(1, &c, 1);
 	flag->size++;
-}
-
-void	ft_flag_roam(t_flag *flag)
-{
-	flag->roam++;
 }

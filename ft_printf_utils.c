@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:49:16 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/03 17:48:18 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 18:43:36 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	ft_putstr_printf(char *s, t_flag *flag)
 	}
 }
 
-int	ft_print_d_u_add_on(long nbr, int count_digit, t_flag *flag)
+int	ft_print_d_u_x_add_on(long nbr, int count_digit, t_flag *flag)
 {
 	if (flag->f_prec == 0)
 		flag->zero = ' ';
-	if (flag->type == 'd')
+	if (flag->type == 'd' || flag->type == 'i')
 	{
 		if (count_digit <= flag->prec)
 		{
@@ -45,7 +45,7 @@ int	ft_print_d_u_add_on(long nbr, int count_digit, t_flag *flag)
 		else if (flag->f_prec == 0 && flag->prec == 0 && nbr == 0)
 			return (0);
 	}
-	else
+	else if (flag->type == 'u' || flag->type == 'x' || flag->type == 'X')
 	{
 		if (count_digit <= flag->prec)
 			return (flag->prec);
@@ -55,38 +55,49 @@ int	ft_print_d_u_add_on(long nbr, int count_digit, t_flag *flag)
 	return (count_digit);
 }
 
-long	ft_count_digit(long nbr)
+long	ft_count_digit(long nbr, t_flag *flag)
 {
 	long	ret;
 
 	ret = 1;
-	if (nbr < 0)
+	if (flag->hexa == 0)
 	{
-		ret++;
-		nbr = -nbr;
+		while (nbr >= 16)
+		{
+			nbr /= 16;
+			ret++;
+		}
 	}
-	while (nbr >= 10)
+	else
 	{
-		nbr /= 10;
-		ret++;
+		if (nbr < 0)
+		{
+			ret++;
+			nbr = -nbr;
+		}
+		while (nbr >= 10)
+		{
+			nbr /= 10;
+			ret++;
+		}
 	}
 	return (ret);
 }
 
-int	ft_putnbr_printf(long nbr, int i_max, t_flag *flag)
+void	ft_putnbr_printf(long nbr, int i_max, t_flag *flag, char *base)
 {
-	int	ret;
 	int	pow;
+	int	baselen;
 
-	ret = 0;
 	if (nbr == 0 && i_max == 0 && flag->f_prec == 0)
-		return (0);
+		return ;
 	if (nbr < 0)
 	{
 		ft_printf_putchar('-', flag);
 		nbr *= -1;
 	}
-	pow = ft_count_digit(nbr) - 1;
+	pow = ft_count_digit(nbr, flag) - 1;
+	baselen = ft_strlen(base);
 	if (i_max < pow)
 		i_max = pow;
 	while (i_max > 0 || pow >= 0)
@@ -95,11 +106,10 @@ int	ft_putnbr_printf(long nbr, int i_max, t_flag *flag)
 			ft_printf_putchar('0', flag);
 		else
 		{
-			ft_printf_putchar(((nbr / ft_pow(10, pow--)) + 48), flag);
-			nbr -= (nbr / ft_pow(10, pow + 1)) * ft_pow(10, pow + 1);
+			ft_printf_putchar((base[(nbr / ft_pow(baselen, pow--))]), flag);
+			nbr -= (nbr / ft_pow(baselen, pow + 1)) * ft_pow(baselen, pow + 1);
 		}
 	}
-	return (ret);
 }
 
 long long	ft_pow(int x, int pow)

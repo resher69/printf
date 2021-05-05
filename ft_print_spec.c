@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 16:23:36 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/03 17:53:45 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 19:00:38 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	ft_print_d(long nbr, t_flag *flag)
 {
 	int	field;
 
-	field = flag->width - ft_print_d_u_add_on(nbr, ft_count_digit(nbr), flag);
+	field = 0;
+	if (flag->f_width == 0)
+		field = flag->width - ft_print_d_u_x_add_on(nbr, ft_count_digit(nbr, flag), flag);
 	if (flag->zero == '0' && nbr < 0)
 	{
 		ft_printf_putchar('-', flag);
@@ -60,22 +62,22 @@ void	ft_print_d(long nbr, t_flag *flag)
 	{
 		while (field-- > 0)
 			ft_printf_putchar(flag->zero, flag);
-		ft_putnbr_printf(nbr, flag->prec, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag, "0123456789");
 	}
 	else
 	{
-		ft_putnbr_printf(nbr, flag->prec, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag, "0123456789");
 		while (field-- > 0)
 			ft_printf_putchar(flag->zero, flag);
 	}
 }
 
-void	ft_print_u(unsigned long nbr, t_flag *flag)
+void	ft_print_u(unsigned int nbr, t_flag *flag)
 {
 	int	field;
 
 	field = flag->width \
-		- ft_print_d_u_add_on((unsigned long)nbr, ft_count_digit(nbr), flag);
+		- ft_print_d_u_x_add_on((unsigned long)nbr, ft_count_digit(nbr, flag), flag);
 	if (flag->zero == '0' && nbr < 0)
 	{
 		ft_printf_putchar('-', flag);
@@ -85,11 +87,65 @@ void	ft_print_u(unsigned long nbr, t_flag *flag)
 	{
 		while (field-- > 0)
 			ft_printf_putchar(flag->zero, flag);
-		ft_putnbr_printf(nbr, flag->prec, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag, "0123456789");
 	}
 	else
 	{
-		ft_putnbr_printf(nbr, flag->prec, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag, "0123456789");
+		while (field-- > 0)
+			ft_printf_putchar(flag->zero, flag);
+	}
+}
+
+void	ft_print_x(long nbr, t_flag *flag)
+{
+	int		field;
+	char	*base;
+
+	flag->hexa = 0;
+	base = "0123456789abcdef";
+	if (flag->type == 'X')
+		base = "0123456789ABCDEF";
+	field = flag->width - ft_print_d_u_x_add_on(nbr, ft_count_digit(nbr, flag), flag);
+	if (flag->zero == '0' && nbr < 0)
+	{
+		ft_printf_putchar('-', flag);
+		nbr *= -1;
+	}
+	if (flag->left == 0)
+	{
+		while (field-- > 0)
+			ft_printf_putchar(flag->zero, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag, base);
+	}
+	else
+	{
+		ft_putnbr_printf(nbr, flag->prec, flag, base);
+		while (field-- > 0)
+			ft_printf_putchar(flag->zero, flag);
+	}
+}
+
+void	ft_print_p(size_t nbr, t_flag *flag)
+{
+	int		field;
+
+	flag->hexa = 0;
+	field = flag->width - ft_print_d_u_x_add_on(nbr, ft_count_digit(nbr, flag), flag);
+	if (flag->zero == '0' && nbr < 0)
+	{
+		ft_printf_putchar('-', flag);
+		nbr *= -1;
+	}
+	if (flag->left == 0)
+	{
+		while (field-- > 0)
+			ft_printf_putchar(flag->zero, flag);
+		ft_putnbr_printf(nbr, flag->prec, flag, "0123456789abcdef");
+	}
+	else
+	{
+		ft_putnbr_printf(nbr, flag->prec, flag, "0123456789abcdef");
 		while (field-- > 0)
 			ft_printf_putchar(flag->zero, flag);
 	}

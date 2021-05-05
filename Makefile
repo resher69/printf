@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/04/29 12:24:45 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/05/04 16:27:43 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS	=	ft_printf.c\
 			ft_printf_flag.c\
 			ft_printf_utils.c\
 			ft_printf_utils2.c\
+			ft_printf_utils3.c\
 			ft_print_spec.c
 
 OBJS		= ${SRCS:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:12:21 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/03 17:18:06 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 17:12:58 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_flag_init(t_flag *flag)
 	flag->left = 1;
 	flag->error = 0;
 	flag->flag = 1;
+	flag->hexa = 1;
 	flag->type = '\0';
 }
 
@@ -86,14 +87,16 @@ void	ft_flag_reset(t_flag *flag)
 	flag->left = 1;
 	flag->flag = 1;
 	flag->type = '\0';
+	flag->hexa = 1;
 }
 
 void	ft_get_type(char *format, t_flag *flag)
 {
 	if (format[flag->roam] == 'c' || format[flag->roam] == 's'
 		|| format[flag->roam] == 'p' || format[flag->roam] == 'd'
-		|| format[flag->roam] == 'u' || format[flag->roam] == 'x'
-		|| format[flag->roam] == 'X' || format[flag->roam] == '%')
+		|| format[flag->roam] == 'i' || format[flag->roam] == 'u'
+		|| format[flag->roam] == 'x' || format[flag->roam] == 'X'
+		|| format[flag->roam] == '%')
 	{
 		flag->type = format[flag->roam];
 		flag->roam++;
