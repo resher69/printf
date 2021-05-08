@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:10:13 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/05 18:58:55 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/08 16:30:25 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void			ft_print_no_percent(char *format, t_flag *flag);
 void			ft_get_type(char *format, t_flag *flag);
 void			ft_putstr_printf(char *s, t_flag *flag);
 void			ft_putnbr_printf(long nbr, int i_max, t_flag *flag, char *base);
+void			ft_putnbr_p_printf(size_t nbr, int i_max, t_flag *flag, char *base);
 long			ft_count_digit(long nbr, t_flag *flag);
 long long		ft_pow(int x, int pow);
 void			ft_putnbr_base(long nbr, int i_max, char *base, t_flag *flag);

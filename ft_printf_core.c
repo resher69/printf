@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:40:49 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/05 18:59:53 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/08 16:35:54 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ void	ft_print_type(va_list args, t_flag *flag, char *format)
 	else if (flag->type == 's')
 		ft_print_s(va_arg(args, char *), flag);
 	else if (flag->type == 'p')
-		ft_print_p((va_arg(args, size_t), flag);
+		ft_print_p(va_arg(args, size_t), flag);
 	else if (flag->type == 'd' || flag->type == 'i')
 		ft_print_d((long)va_arg(args, int), flag);
 	else if (flag->type == 'u')
 		ft_print_u((unsigned long)va_arg(args, unsigned int), flag);
-	if (flag->type == 'x' || flag->type == 'X')
+	else if (flag->type == 'x' || flag->type == 'X')
 		ft_print_x(va_arg(args, unsigned int), flag);
-	// if (format[flag->roam] == '%')
-	// 	ft_print_percent(args, flag);
+	else if (flag->type == '%')
+		ft_print_c(va_arg(args, int), flag);
 	ft_flag_reset(flag);
 }
  

@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:48:12 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/04 17:22:14 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/08 16:05:45 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,25 @@ void	ft_printf_putchar(char c, t_flag *flag)
 {
 	write(1, &c, 1);
 	flag->size++;
+}
+
+void	ft_putnbr_p_printf(size_t nbr, int i_max, t_flag *flag, char *base)
+{
+	int	pow;
+
+	pow = ft_count_digit(nbr, flag) - 1;
+	if (i_max < pow)
+		i_max = pow;
+	ft_printf_putchar('0', flag);
+	ft_printf_putchar('x', flag);
+	while (i_max > 0 || pow >= 0)
+	{
+		if (pow + 1 < i_max--)
+			ft_printf_putchar('0', flag);
+		else
+		{
+			ft_printf_putchar((base[(nbr / ft_pow(16, pow--))]), flag);
+			nbr -= (nbr / ft_pow(16, pow + 1)) * ft_pow(16, pow + 1);
+		}
+	}
 }
