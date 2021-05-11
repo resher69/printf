@@ -9,13 +9,13 @@ int	main(void)
 	// d = ft_strlen(test);
 	// printf("g ecri %d\n\n", d);
 
-	d = printf("| %s|\n", "");
-	i = ft_printf("| %s|\n", "");
+	d = printf("|%-192.131%|\n");
+	i = ft_printf("|%-192.131%|\n");
 	printf("g ecri %i carac alor ke jaurai du ecrire %d\n", i, d);
 //LONG_MIN, LONG_MAX)
 //ULONG_MAX, -ULONG_MAX
 
-//1.OK 2.OK 3.OK 4.OK 5.OK 6.OK 7.OK 8.KO 9.SIGSEGV 10.SIGSEGV 11.OK 12.OK 13.OK 14.OK 15.OK 16.OK 17.OK 18.OK 19.OK 20.OK 21.OK 22.SIGSEGV 23.SIGSEGV 24.SIGSEGV 25.SIGSEGV 26.SIGSEGV 27.OK 28.KO 29.KO 30.OK 31.KO 32.KO 33.KO
+//1.OK 2.OK 3.OK 4.OK 5.OK 6.OK 7.OK 8.KO 9.SIGSEGV 10.SIGSEGV 11.OK 12.OK 13.OK 14.OK 15.OK 16.OK 17.OK 18.OK 19.OK 20.OK 21.OK 22.SIGSEGV 23.SIGSEGV 24.SIGSEGV 25.SIGSEGV 26.SIGSEGV 27.OK 28.KO 29.KO 30.OK 31.KO 32.KO 33.KO 
 // TEST(1, print(""));
 //         TEST(2, print("ccccc"));
 //         TEST(3, print("ddddd"));

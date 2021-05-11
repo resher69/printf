@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:12:21 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/08 16:35:25 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 17:38:19 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_flag_init(t_flag *flag)
 	flag->flag = 1;
 	flag->hexa = 1;
 	flag->type = '\0';
+
 }
 
 void	ft_flag_reset(t_flag *flag)

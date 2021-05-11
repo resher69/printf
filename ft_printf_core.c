@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:40:49 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/08 16:35:54 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 17:17:36 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_print_type(va_list args, t_flag *flag, char *format)
 	else if (flag->type == 'x' || flag->type == 'X')
 		ft_print_x(va_arg(args, unsigned int), flag);
 	else if (flag->type == '%')
-		ft_print_c(va_arg(args, int), flag);
+		ft_print_c('%', flag);
 	ft_flag_reset(flag);
 }
  
