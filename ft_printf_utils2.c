@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:48:12 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/11 17:43:00 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/13 18:13:25 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ void	ft_printf_putchar(char c, t_flag *flag)
 	flag->size++;
 }
 
-void	ft_putnbr_p_printf(long long int nbr, int i_max, t_flag *flag, char *base)
+void	ft_putnbr_p_printf(long long int nbr, int i_max, t_flag *flag,
+	char *base)
 {
 	int	pow;
-	
+
 	pow = ft_count_digit_p(nbr, flag) - 1;
 	if (i_max < pow)
 		i_max = pow;
@@ -58,4 +59,31 @@ void	ft_putnbr_p_printf(long long int nbr, int i_max, t_flag *flag, char *base)
 			nbr -= (nbr / ft_pow(16, pow + 1)) * ft_pow(16, pow + 1);
 		}
 	}
+}
+
+int	ft_count_digit_p(unsigned long long int nbr, t_flag *flag)
+{
+	int	ret;
+
+	if (flag->f_prec == 0 && flag->prec == 0 && nbr == 0)
+	{
+		flag->flag = 0;
+		return (0);
+	}
+	ret = 1;
+	if (flag->hexa == 0)
+	{
+		if (nbr < 0)
+		{
+			ret++;
+			nbr = (nbr + 1);
+			nbr = -nbr;
+		}
+		while (nbr >= 16)
+		{
+			nbr /= 16;
+			ret++;
+		}
+	}
+	return (ret);
 }

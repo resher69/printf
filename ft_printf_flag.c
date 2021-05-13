@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:12:21 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/11 17:38:19 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/13 18:13:54 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_get_prec(char *format, t_flag *flag, va_list args)
 		flag->f_prec = 0;
 		flag->roam++;
 	}
-	if ((format[flag->roam] >= '0' && format[flag->roam] <= '9') || format[flag->roam] == '*')
+	if ((format[flag->roam] >= '0'
+			&& format[flag->roam] <= '9') || format[flag->roam] == '*')
 	{
 		if (format[flag->roam] == '*')
 		{
@@ -74,7 +75,7 @@ void	ft_flag_init(t_flag *flag)
 	flag->flag = 1;
 	flag->hexa = 1;
 	flag->type = '\0';
-
+	flag->count = 0;
 }
 
 void	ft_flag_reset(t_flag *flag)
@@ -89,6 +90,7 @@ void	ft_flag_reset(t_flag *flag)
 	flag->flag = 1;
 	flag->type = '\0';
 	flag->hexa = 1;
+	flag->count = 0;
 }
 
 void	ft_get_type(char *format, t_flag *flag)

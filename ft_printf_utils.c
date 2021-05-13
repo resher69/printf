@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:49:16 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/11 17:40:18 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/13 16:38:12 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,32 +119,5 @@ unsigned long long int	ft_pow(unsigned long long int x, int pow)
 	ret = 1;
 	while (pow-- > 0)
 		ret *= x;
-	return (ret);
-}
-
-int	ft_count_digit_p(unsigned long long int nbr, t_flag *flag)
-{
-	int	ret;
-
-	if (flag->f_prec == 0 && flag->prec == 0 && nbr == 0)
-	{
-		flag->flag = 0;
-		return (0);	
-	}
-	ret = 1;
-	if (flag->hexa == 0)
-	{
-		if (nbr < 0)
-		{
-			ret++;
-			nbr = (nbr + 1);
-			nbr = -nbr;
-		}
-		while (nbr >= 16)
-		{
-			nbr /= 16;
-			ret++;
-		}
-	}
 	return (ret);
 }
