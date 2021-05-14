@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:49:16 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/13 16:38:12 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/14 16:35:13 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	ft_putnbr_printf(long nbr, int i_max, t_flag *flag, char *base)
 
 unsigned long long int	ft_pow(unsigned long long int x, int pow)
 {
-	long long int	ret;
+	unsigned long long int	ret;
 
 	ret = 1;
 	while (pow-- > 0)

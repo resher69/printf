@@ -6,21 +6,13 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:10:13 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/13 18:18:29 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/14 16:35:04 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-// ENLEVER STDIO
-// ENLEVER STDIO
-// ENLEVER STDIO
-// ENLEVER STDIO
-// ENLEVER STDIO
-// ENLEVER STDIO
-
-# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -41,18 +33,16 @@ typedef struct s_flag
 	char	type;
 	int		size;
 	int		roam;
-	int		error;
 	int		prec;
 	int		left;
 	int		flag;
 	int		hexa;
-	int		count;
+	char	base[17];
 }					t_flag;
 
 int						ft_printf(const char *str, ...)
 						__attribute__((format(printf, 1, 2)));
 void					ft_printf_putchar(char c, t_flag *flag);
-int						ft_check_percent(char *format, t_flag *flag);
 int						ft_printf_core(char *format, t_flag *flag,
 							va_list args);
 void					ft_get_first_flag(char *format, t_flag *flag);

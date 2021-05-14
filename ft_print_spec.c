@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 16:23:36 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/13 18:17:07 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/14 16:30:25 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_print_d(long nbr, t_flag *flag)
 {
 	int	field;
 
-	field = 0;
 	field = flag->width
 		- ft_print_d_u_x_add_on(nbr, ft_count_digit(nbr, flag), flag);
 	if (flag->zero == '0' && nbr < 0)
@@ -79,28 +78,21 @@ void	ft_print_d(long nbr, t_flag *flag)
 void	ft_print_x(long nbr, t_flag *flag)
 {
 	int		field;
-	char	*base;
 
 	flag->hexa = 0;
-	base = "0123456789abcdef";
 	if (flag->type == 'X')
-		base = "0123456789ABCDEF";
+		ft_strcpy(flag->base, "0123456789ABCDEF");
 	field = flag->width
 		- ft_print_d_u_x_add_on(nbr, ft_count_digit(nbr, flag), flag);
-	if (flag->zero == '0' && nbr < 0)
-	{
-		ft_printf_putchar('-', flag);
-		nbr *= -1;
-	}
 	if (flag->left == 0)
 	{
 		while (field-- > 0)
 			ft_printf_putchar(flag->zero, flag);
-		ft_putnbr_printf(nbr, flag->prec, flag, base);
+		ft_putnbr_printf(nbr, flag->prec, flag, flag->base);
 	}
 	else
 	{
-		ft_putnbr_printf(nbr, flag->prec, flag, base);
+		ft_putnbr_printf(nbr, flag->prec, flag, flag->base);
 		while (field-- > 0)
 			ft_printf_putchar(flag->zero, flag);
 	}

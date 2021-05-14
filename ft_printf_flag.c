@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 14:12:21 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/13 18:13:54 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/14 16:28:44 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,10 @@ void	ft_flag_init(t_flag *flag)
 	flag->prec = 0;
 	flag->roam = 0;
 	flag->left = 1;
-	flag->error = 0;
 	flag->flag = 1;
 	flag->hexa = 1;
 	flag->type = '\0';
-	flag->count = 0;
+	ft_strcpy(flag->base, "0123456789abcdef");
 }
 
 void	ft_flag_reset(t_flag *flag)
@@ -90,7 +89,7 @@ void	ft_flag_reset(t_flag *flag)
 	flag->flag = 1;
 	flag->type = '\0';
 	flag->hexa = 1;
-	flag->count = 0;
+	ft_strcpy(flag->base, "0123456789abcdef");
 }
 
 void	ft_get_type(char *format, t_flag *flag)
@@ -104,6 +103,4 @@ void	ft_get_type(char *format, t_flag *flag)
 		flag->type = format[flag->roam];
 		flag->roam++;
 	}
-	else
-		flag->error = 0;
 }

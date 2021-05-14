@@ -6,11 +6,11 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/27 11:11:01 by agardet           #+#    #+#              #
-#    Updated: 2021/03/08 15:41:21 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/05/14 16:14:21 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-	SRCS	=	ft_putchar.c\
+SRCS	=		ft_putchar.c\
 				ft_memset.c\
 				ft_bzero.c\
 				ft_memcpy.c\
@@ -49,10 +49,8 @@
 				ft_split.c\
 				ft_strndup.c\
 				ft_strncpy.c\
-				ft_strmapi.c
-			
-
-BONUS_SRCS =	ft_lstadd_back.c\
+				ft_strmapi.c\
+				ft_lstadd_back.c\
 				ft_lstadd_front.c\
 				ft_lstdelone.c\
 				ft_lstlast.c\
@@ -63,9 +61,7 @@ BONUS_SRCS =	ft_lstadd_back.c\
 				ft_lstmap.c
 
 
-OBJS	=	$(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+OBJS	=	$(addprefix bin/, $(SRCS:.c=.o))
 
 FLAGS	=	-Wall -Wextra -Werror
 
@@ -77,20 +73,17 @@ $(NAME):	$(OBJS)
 
 HEADER = libft.h
 
-%.o:		%.c				$(HEADER)
-			gcc $(FLAGS) -I $(HEADER) -o $@ -c $<
+bin/%.o:	src/%.c			$(HEADER)
+			gcc $(FLAGS) -I. -o $@ -c $<
 
 all:		$(NAME)
 
-bonus:		$(BONUS_OBJS)
-			ar -rc $(NAME) $(BONUS_OBJS)
-			ranlib $(NAME)
 clean:
-			rm -f $(OBJS) $(BONUS_OBJS)
+			rm -f $(OBJS)
 
 fclean:		clean
-			rm -f $(NAME) $(BONUS)
+			rm -f $(NAME)
 
 re:			fclean all
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 11:08:37 by agardet           #+#    #+#             */
-/*   Updated: 2021/05/13 18:23:17 by agardet          ###   ########lyon.fr   */
+/*   Updated: 2021/05/14 13:54:53 by agardet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,11 @@ static char	**free_tab(char **strs)
 	return (NULL);
 }
 
-char	**ft_split2(char const *s, char **strs_split)
-{	
-	if (!s)
-		return (NULL);
-	if (!strs_split)
-		return (NULL);
-	return (strs_split);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**strs_split;
 	char	*start;
 	size_t	i;
-
 
 	strs_split = ft_calloc(sizeof(char *), (count_sep(s, c) + 1));
 	if ((count_sep(s, c) == 0))
@@ -86,4 +76,3 @@ char	**ft_split(char const *s, char c)
 	strs_split[i] = NULL;
 	return (strs_split);
 }
-
