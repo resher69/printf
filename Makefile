@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 16:37:13 by agardet           #+#    #+#              #
-#    Updated: 2021/05/14 16:17:35 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/05/15 16:20:00 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all:		${NAME}
 %.o : %.c	${INC}
 			${CC} ${CFLAGS} -I includes/ -c $< -o $@
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS}		includes/ft_printf.h
 			make -C libft/
 			cp libft/libft.a libftprintf.a
 			ar -rcs ${NAME} ${OBJS}

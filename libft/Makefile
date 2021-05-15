@@ -6,7 +6,7 @@
 #    By: agardet <agardet@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/27 11:11:01 by agardet           #+#    #+#              #
-#    Updated: 2021/05/14 16:14:21 by agardet          ###   ########lyon.fr    #
+#    Updated: 2021/05/15 16:18:48 by agardet          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ SRCS	=		ft_putchar.c\
 				ft_lstmap.c
 
 
-OBJS	=	$(addprefix bin/, $(SRCS:.c=.o))
+OBJS	=	$(SRCS:.c=.o)
 
 FLAGS	=	-Wall -Wextra -Werror
 
@@ -73,7 +73,7 @@ $(NAME):	$(OBJS)
 
 HEADER = libft.h
 
-bin/%.o:	src/%.c			$(HEADER)
+%.o:		%.c			$(HEADER)
 			gcc $(FLAGS) -I. -o $@ -c $<
 
 all:		$(NAME)
